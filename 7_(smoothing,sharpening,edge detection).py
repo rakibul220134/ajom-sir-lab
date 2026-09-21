@@ -45,7 +45,7 @@ for i in range(1,h-1):
 
         gy=(
             - int(img[i-1,j-1])
-            -2* int(img[i-1,j])
+            - 2* int(img[i-1,j])
             - int(img[i-1,j+1])
             + int(img[i+1,j-1])
             + int(img[i+1,j])

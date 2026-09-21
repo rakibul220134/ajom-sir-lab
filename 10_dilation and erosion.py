@@ -39,7 +39,6 @@ for i in range(1, h-1):
         dilation = False
         for x in range(-1, 2):
             for y in range(-1, 2):
-
                 if binary[i+x, j+y] == 255:
                     dilation = True
         if dilation:
