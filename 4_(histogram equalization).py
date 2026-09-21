@@ -18,11 +18,15 @@ plt.axis("off")
 
 # Original histogram
 plt.subplot(2, 2, 3)
+plt.xlabel("intensity")
+plt.ylabel("frequency")
 plt.hist(img.ravel(), 256, [0, 256])
 plt.title("Original Histogram")
 
 # Equalized histogram
 plt.subplot(2, 2, 4)
+plt.xlabel("intensity")
+plt.ylabel("frequency")
 plt.hist(equalized.ravel(), 256, [0, 256])
 plt.title("Equalized Histogram")
 

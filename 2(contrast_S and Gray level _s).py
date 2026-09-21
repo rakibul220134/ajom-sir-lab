@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 img = cv2.imread("image.png", 0)
 
 # Contrast Stretching
-r_min, r_max = np.min(img), np.max(img)
-contrast = ((img - r_min) / (r_max - r_min) * 255)
+min= np.min(img)
+max =np.max(img)
+contrast = ((img - min) / (max - min) * 255)
 contrast = np.uint8(contrast)
 
 # Gray Level Slicing (Threshold Range: 100 to 200)
