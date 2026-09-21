@@ -7,11 +7,18 @@ img = cv2.imread("image.png", 0)
 hist = [0] * 256
 
 # Count pixels manually
-for row in img:
-    for pixel in row:
-        hist[pixel] += 1
+for i in range(len(img)):
+    for j in range(len(img[i])):
+        hist[img[i][j]] += 1
+
+#original image
+plt.subplot(1, 2, 1)
+plt.title("original")
+plt.imshow(img, cmap="gray")
+plt.axis("off")
 
 # Draw histogram
+plt.subplot(1, 2, 2)
 plt.title("Histogram")
 plt.xlabel("Intensity")
 plt.ylabel("Frequency")

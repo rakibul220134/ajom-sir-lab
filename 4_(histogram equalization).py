@@ -6,9 +6,6 @@ img = cv2.imread("image.png", 0)
 # Histogram Equalization
 equalized = cv2.equalizeHist(img)
 
-# Display images
-#plt.figure(figsize=(10, 6))
-
 plt.subplot(2, 2, 1)
 plt.imshow(img, cmap="gray")
 plt.title("Original")
