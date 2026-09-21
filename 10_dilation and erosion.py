@@ -4,27 +4,56 @@ import matplotlib.pyplot as plt
 
 img = cv2.imread("image.png", 0)
 
-_, binary = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+h, w = img.shape
 
-#kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-kernel = np.ones((3, 3), np.uint8)
+# Empty images
+binary = np.zeros_like(img)
+eroded = np.zeros_like(img)
+dilated = np.zeros_like(img)
 
-dilation = cv2.dilate(binary, kernel)
-erosion = cv2.erode(binary, kernel)
+# 1. Manual Thresholding
+for i in range(h):
+    for j in range(w):
 
-plt.subplot(1, 3, 1)
-plt.imshow(binary, cmap="gray")
-plt.title("Binary")
-plt.axis("off")
+        if img[i, j] >= 128:
+            binary[i, j] = 255
+        else:
+            binary[i, j] = 0
 
-plt.subplot(1, 3, 2)
-plt.imshow(dilation, cmap="gray")
-plt.title("Dilation")
-plt.axis("off")
+# 2. Manual Erosion
+for i in range(1, h-1):
+    for j in range(1, w-1):
+        errotion = True
+        for x in range(-1, 2):
+            for y in range(-1, 2):
+                if binary[i+x, j+y] == 0:
+                    errotion = False
 
-plt.subplot(1, 3, 3)
-plt.title("Erosion")
-plt.imshow(erosion, cmap="gray")
-plt.axis("off")
+        if errotion:
+            eroded[i, j] = 255
+        else:
+            eroded[i, j] = 0
+# 3. Manual Dilation
+for i in range(1, h-1):
+    for j in range(1, w-1):
+        dilation = False
+        for x in range(-1, 2):
+            for y in range(-1, 2):
+
+                if binary[i+x, j+y] == 255:
+                    dilation = True
+        if dilation:
+            dilated[i, j] = 255
+        else:
+            dilated[i, j] = 0
+
+# 4. Display Images
+images = [img, binary, eroded, dilated]
+titles = ["Original", "Binary",  "Erosion","Dilation"]
+for k in range(4):
+    plt.subplot(2, 2, k+1)
+    plt.imshow(images[k], cmap="gray")
+    plt.title(titles[k])
+    plt.axis("off")
 
 plt.show()
