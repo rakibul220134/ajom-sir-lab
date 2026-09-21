@@ -10,14 +10,11 @@ gamma = 0.5  # gamma < 1 ইমেজ ব্রাইট করবে, gamma > 1
 gamma_img = (255 * (img / 255) ** gamma)
 gamma_img = np.uint8(gamma_img)
 
-plt.subplot(1, 2, 1)
-plt.title("Original")
-plt.imshow(img, cmap="gray")
-plt.axis("off")
-
-plt.subplot(1, 2, 2)
-plt.title("Gamma")
-plt.imshow(gamma_img, cmap="gray")
-plt.axis("off")
-
+images = [img, gamma_img]
+titles = ["Original", "Gamma"]
+for k in range(2):
+    plt.subplot(1, 2, k+1)
+    plt.imshow(images[k], cmap="gray")
+    plt.title(titles[k])
+    plt.axis("off")
 plt.show()

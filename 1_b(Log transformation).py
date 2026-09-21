@@ -9,16 +9,13 @@ c = 255 / np.log(1 + np.max(img))
 img_log = c * (np.log(1 + img))
 img_log = np.uint8(img_log)
 
-#plt.figure(figsize=(8, 4))
-plt.subplot(1, 2, 1)
-plt.title("Original Image")
-plt.imshow(img, cmap='gray')
-plt.axis('off')
-
-plt.subplot(1, 2, 2)
-plt.title("Log Transformation")
-plt.imshow(img_log, cmap='gray')
-plt.axis('off')
+images = [img, img_log]
+titles = ["Original", "Log"]
+for k in range(2):
+    plt.subplot(1, 2, k+1)
+    plt.imshow(images[k], cmap="gray")
+    plt.title(titles[k])
+    plt.axis("off")
 
 #plt.tight_layout()
 plt.show()
