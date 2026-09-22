@@ -64,5 +64,5 @@ for k in range(4):
     plt.title(title[k])
     plt.axis('off')
 
-plt.tight_layout()
+#plt.tight_layout()
 plt.show()
