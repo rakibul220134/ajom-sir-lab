@@ -18,6 +18,7 @@ for i in range(1,256):
 
 # Total number of pixels
 total_pixel=img.shape[0]*img.shape[1]
+
 # Step 3: Create Mapping
 mapping=[0]*256
 for i in range(256):
